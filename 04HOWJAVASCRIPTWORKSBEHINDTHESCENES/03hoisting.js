@@ -1,9 +1,9 @@
 "use strict";
 //VARIABLES
 
-console.log(name); //output: undefined
+console.log(nameS); //output: undefined
 
-var name = "Mike"; //var is hoisted and will output undefined. Also, variables declared with var will create properties in the window object
+var nameS = "Mike"; //var is hoisted and will output undefined. Also, variables declared with var will create properties in the window object
 
 //let and const will return reference errors because let and const are not hoisted
 let age = 24;

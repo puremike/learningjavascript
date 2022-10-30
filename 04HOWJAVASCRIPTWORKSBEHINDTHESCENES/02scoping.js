@@ -74,7 +74,7 @@ function goodDeals(deals) {
           );
         } else if (goodDeals > badDeals) {
           console.log(
-            `${prgStatus}There are ${goodDeals} good and ${blackFriday} black friday deals left in the ${marketType}`
+            `${prgStatus}There are ${goodDeals} good and ${blackFriday} black friday deals left in the ${marketType} \n`
           );
         }
       }
@@ -85,3 +85,17 @@ function goodDeals(deals) {
   badDeals(2);
 }
 goodDeals(5);
+
+function calcAge(currentYear, birthYear) {
+  const age = currentYear - birthYear;
+  console.log(`She's ${age}-years old`);
+  function checkIfMillenial() {
+    if (birthYear >= 1981 && age <= 1996) {
+      console.log(`She is ${age}-old and a Millenial.`);
+    } else {
+      console.log(`She is ${age}-old and not a Millenial.`);
+    }
+  }
+  checkIfMillenial();
+}
+calcAge(2022, 1988);
