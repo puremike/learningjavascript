@@ -1,5 +1,7 @@
 "use strict";
 
+//spread operator is to unpack elements into an array. It's used where values are separated by comma and not where variables are separated by comma
+
 const restaurant = {
   name: "Classico Italino",
   location: "Via Angelo Tavanti 23, Firenze, Italy",
@@ -35,7 +37,7 @@ console.log(newA);
 const newMenu = [...restaurant.mainMenu, "Gnoci"];
 console.log(newMenu);
 
-//Another Array
+//Copy2: Another Array
 const changeArr = [12, 23, 44];
 const changeArrCopy = [...changeArr];
 changeArrCopy[0] = 24;
