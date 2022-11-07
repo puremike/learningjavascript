@@ -95,3 +95,9 @@ fortune500Company.sort((a, b, c) => {
   return a.localeCompare(c);
 });
 console.log(fortune500Company);
+
+//join two arrays together using the concat method
+
+const firArr = [1, 2, 3];
+const secArr = [4, 5, 6];
+console.log(firArr.concat(secArr));
