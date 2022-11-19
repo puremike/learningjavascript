@@ -29,10 +29,10 @@ console.log(airline.slice(1, -1));
 //function to check seat
 
 const checkMiddleSeat = function (seat) {
-  const checkSeat = seat.slice(-1);
-  if (checkSeat === "B" || checkSeat === "E")
-    console.log(`You got the middle seat!`);
-  else console.log("You're a lucky!");
+  const seatNumber = seat.slice(-1);
+  if (seatNumber === "B" || seatNumber === "E")
+    console.log(`You're unlucky today!`);
+  else console.log(`You're lucky today!`);
 };
 
 checkMiddleSeat("B2E");
