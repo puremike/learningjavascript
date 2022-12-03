@@ -39,7 +39,7 @@ function abbrevString(string) {
   const sliceSecondString = secondString
     .slice(0, 2)
     .replace(secondString[1], ".");
-  const abbrevStrings = firstString + " " + sliceSecondString;
+  const abbrevStrings = [firstString, sliceSecondString].join(" ");
   console.log(abbrevStrings);
 }
 
