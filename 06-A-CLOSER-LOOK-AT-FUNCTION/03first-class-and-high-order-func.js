@@ -68,3 +68,21 @@ const greet2 = (greeting) => {
   };
 };
 greet2("Hello")("Michael");
+
+//function returning a function - average
+function container() {
+  return function (...numbers) {
+    let sum = 0;
+    let average = 0;
+    for (let i = 0; i < numbers.length; i++) {
+      sum += numbers[i];
+      average = sum / numbers.length;
+    }
+    console.log(`Sum of numbers = ${sum}`);
+    console.log(`Average of the numbers = ${average}`);
+  };
+}
+const numbers = [1, 4, 7, 9, 2, 5, 6, 8, 9, 10];
+const cont = container();
+cont(...numbers);
+// container()(...numbers);
