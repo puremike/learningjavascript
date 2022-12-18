@@ -44,6 +44,12 @@ console.log(...arr, ...arr2); //another way
 console.log("JOIN METHOD");
 console.log(letters.join(" + "));
 
+const arr3 = ["k", "l", "m", "n"];
+
+//using the at method
+console.log("AT METHOD");
+console.log(arr3.at(3));
+
 // function orderName(name) {
 //   const fullName = name.toLowerCase();
 //   const [lastName, firstName, middleName] = fullName.split(" ");
