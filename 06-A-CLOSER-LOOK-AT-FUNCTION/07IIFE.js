@@ -18,3 +18,7 @@
   const addNum = a + b;
   console.log(`Sum = ${addNum}`);
 })(100, 200);
+
+(function (c, v) {
+  console.log(c * v);
+})(10, 5);
