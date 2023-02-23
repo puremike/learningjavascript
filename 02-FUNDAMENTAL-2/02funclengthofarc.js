@@ -10,3 +10,15 @@ const parametersForLengthOfArc = {
   },
 };
 console.log(parametersForLengthOfArc.calcLengthOfArc());
+
+//using modern javascript, you can write your function directly
+const calculateAreaOfTriangle = {
+  base: 30,
+  height: 45,
+  areaOfTriangle() {
+    const result = 0.5 * this.base * this.height;
+    return `The area of triangle with base of ${this.base} and height of ${this.height} = ${result}m2`;
+  },
+};
+
+console.log(calculateAreaOfTriangle.areaOfTriangle());
