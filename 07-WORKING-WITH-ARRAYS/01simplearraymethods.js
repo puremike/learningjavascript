@@ -62,3 +62,13 @@ console.log(arr3.at(3));
 //   );
 // }
 // orderName("egbINOla MichAEl OLUWaTObi");
+
+const flags = {
+  alt: "Nigerian Flag, White",
+  png: "Nigerian Flag, Green and White",
+  currencies: {
+    name: "Nigerian Naira",
+    symbol: "NGN",
+  },
+};
+console.log(flags.currencies.name);
