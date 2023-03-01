@@ -1,0 +1,33 @@
+body {
+  background-color: azure;
+  margin: 10rem 10rem;
+}
+
+.style-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  color: white;
+  background-color: rgb(106, 177, 243);
+  border: rgb(106, 177, 243);
+  font-size: 1.2rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 2rem;
+  height: 5rem;
+  width: 15%;
+  margin: 15rem 0;
+}
+
+button:hover {
+  color: white;
+  background-color: rgb(15, 125, 228);
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  margin: 15rem 0;
+}
