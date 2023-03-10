@@ -128,3 +128,22 @@ const getCountryData = function (country) {
 btn.addEventListener('click', function () {
   getCountryData('nigeria');
 });
+
+//doing a reverse geocoding
+
+const whereAmI = function (lat, long) {
+  fetch(
+    `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${lat}%2C${long}`
+  )
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+      console.log(
+        `You're in ${json.address.City || json.address.LongLabel}, ${
+          json.address.CntryName
+        }`
+      );
+    });
+};
+
+whereAmI(-117.205525, 34.038232);
