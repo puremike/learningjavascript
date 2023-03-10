@@ -36,7 +36,12 @@ const renderCountry = function (data, className = '') {
   </article>
   `;
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
+};
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  // countriesContainer.style.opacity = 1;
 };
 
 // function getCountryData(country_name) {
@@ -76,12 +81,21 @@ const renderCountry = function (data, className = '') {
 
 //By using PROMISES, we no longer need to rely on events and callbacks passed into asynchronous functions to handle asynchronous results. Instead of nesting callbacks, we can chain promises for a sequence of asynchronous operations: escaping callback hell.
 
+const getJSON = function (url, errorMsg = 'Something went wrong!') {
+  return fetch(url).then(res => {
+    if (!res.ok) throw new Error(`Country not available (${res.status})`);
+    return res.json();
+  });
+};
+
 //CONSUME A PROMISE
 
 const getCountryData = function (country) {
   //country 1
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(response => response.json())
+  getJSON(
+    `https://restcountries.com/v3.1/name/${country}`,
+    'Country not available'
+  )
     .then(data => {
       console.log(data);
       renderCountry(data[0]);
@@ -90,18 +104,27 @@ const getCountryData = function (country) {
       const neighbour = data[0].borders?.[0]; //optional chaining
       console.log(neighbour);
 
-      if (!neighbour) return;
+      if (!neighbour) throw new Error('No neighbour found!');
+
+      //CHAINING PROMISES
 
       //fetching data for country 2
-      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+      return getJSON(
+        `https://restcountries.com/v2/alpha/${neighbour}`,
+        'Country not available'
+      );
     })
-    .then(res => res.json())
     .then(data => {
       console.log(data);
       renderCountry(data, 'neighbour');
-    });
+    })
+    .catch(err => {
+      // console.error(`${err}`);
+      renderError(`Something went wrong! ${err.message}. Try again!`);
+    })
+    .finally(() => (countriesContainer.style.opacity = 1));
 };
 
-getCountryData('nigeria');
-
-//CHAINING PROMISES
+btn.addEventListener('click', function () {
+  getCountryData('nigeria');
+});
