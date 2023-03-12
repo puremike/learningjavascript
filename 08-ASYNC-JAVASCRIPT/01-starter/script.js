@@ -143,7 +143,35 @@ const whereAmI = function (lat, long) {
           json.address.CntryName
         }`
       );
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 whereAmI(-117.205525, 34.038232);
+
+// async await
+// const whereAreYou = async function (lat, long) {
+//   const res = await fetch(
+//     `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${lat}%2C${long}`
+//   );
+//   const resBody = await res.json();
+//   // console.log(resBody);
+//   console.log(
+//     `You're in ${resBody.address.City || resBody.address.LongLabel}, ${
+//       resBody.address.CntryName
+//     }.`
+//   );
+// };
+
+// whereAreYou(-117.205525, 34.038232);
+
+//code outside of any callbacks will log first due to event loop
+console.log('Test start');
+setTimeout(() => console.log('O sec timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 1000000000; i++) {}
+  console.log(res);
+});
+console.log('Test end');
