@@ -26,6 +26,20 @@ lotteryPromise
 
 //promisifying is simply converting an asynchronous promise behavior to promise-based
 
+//instead of using setTimeout, we can promisify the setTimeout
+setTimeout(() => {
+  console.log("Waited 1 sec");
+  setTimeout(() => {
+    console.log("Waited 2 sec");
+    setTimeout(() => {
+      console.log("Waited 3 sec");
+      setTimeout(() => {
+        console.log("Waited 4 sec");
+      }, 4);
+    }, 3);
+  }, 2);
+}, 1);
+
 //promisifying setTimeout
 const wait = function (second) {
   return new Promise(function (resolve) {

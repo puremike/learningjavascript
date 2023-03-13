@@ -132,10 +132,18 @@ btn.addEventListener('click', function () {
 //doing a reverse geocoding
 
 const whereAmI = function (lat, long) {
-  fetch(
-    `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${lat}%2C${long}`
-  )
-    .then(res => res.json())
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: long } = pos.coords;
+      // console.log(`Latitude = ${lat}, Longitude = ${long}`);
+      return fetch(
+        `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${lat}%2C${long}`
+      );
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Problem with geocoding ${res.status}');
+      return res.json();
+    })
     .then(json => {
       console.log(json);
       console.log(
@@ -147,7 +155,7 @@ const whereAmI = function (lat, long) {
     .catch(err => console.log(err));
 };
 
-whereAmI(-117.205525, 34.038232);
+whereAmI();
 
 // async await
 // const whereAreYou = async function (lat, long) {
@@ -164,3 +172,24 @@ whereAmI(-117.205525, 34.038232);
 // };
 
 // whereAreYou(-117.205525, 34.038232);
+
+//geolocation API
+// navigator.geolocation.getCurrentPosition(
+//   pos => console.log(pos),
+//   err => console.error(new Error(err))
+// );
+
+//promisifying the geolocation API
+function getPosition() {
+  // console.log('Getting your current location .....');
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   pos => resolve(pos),
+    //   err => reject(new Error(err))
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+getPosition()
+  .then(pos => console.log(pos))
+  .catch(err => console.error(new Error(err)));
