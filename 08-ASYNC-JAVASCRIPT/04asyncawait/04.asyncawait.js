@@ -79,6 +79,7 @@ const whereAmI = async function () {
       renderCountry(data[0]);
     });
   } catch (err) {
+    console.error(err.message);
     renderError(`${err.message}`);
   }
 };
