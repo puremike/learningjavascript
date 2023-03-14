@@ -84,3 +84,4 @@ const whereAmI = async function () {
 };
 
 whereAmI();
+whereAmI();
